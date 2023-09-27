@@ -1,8 +1,11 @@
 import vagones.*
 
 class Formacion {
-	const property cantidadMaximaPasajeros
-	const vagones = #{}
+	const vagones = new List()
+	
+	method cantidadMaximaPasajeros(){
+		return vagones.sum({v => v.cantidadDePasajeros()})
+	}
 	
 	method cantidadVagonesPopulares(){
 		return vagones.count({v => v.esPopular()})
@@ -10,6 +13,7 @@ class Formacion {
 	method esFormacionCarguera(){
 		return vagones.all({v => v.cargaMaxima() >= 1000})
 	}
+	
 	method dispersionPeso(){
 		return self.pesoMaximo() - self.pesoMinimo()
 	}
@@ -23,12 +27,15 @@ class Formacion {
 	}
 	
 	method cantidadDeBanios(){
-		return vagones.filter({v => v.tieneBanio()}).size()
+		//return vagones.filter({v => v.tieneBanio()}).size()
+		return vagones.count({v => v.tieneBanio()})
 	}
 	
 	method hacerMantenimiento(){
 		vagones.forEach({v => v.hacerMantenimiento()})
 	}
 	
-	method 
+	method estaEquilibrada() {
+		const pasajeros=self.vag
+	}
 }
